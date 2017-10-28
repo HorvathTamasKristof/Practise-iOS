@@ -23,6 +23,26 @@ class ChecklistViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func addItem(){
+        let newRowIndex = items.count //index of the new row
+        
+        let item = ChecklistItem()
+        item.text = "I'm a new row"
+        item.checked = false
+        items.append(item)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0) //tableview add a new cell for the row
+        let indexPaths = [indexPath] //temporary array -> I can insert multiple rows at the same time
+        tableView.insertRows(at: indexPaths, with: .automatic) //tableView insert the new row
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        items.remove(at: indexPath.row) //remove the item from the DATA MODEL
+        
+        let indexPaths = [indexPath]
+        tableView.deleteRows(at: indexPaths, with: .automatic) //delete the corresponding row from table view
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }

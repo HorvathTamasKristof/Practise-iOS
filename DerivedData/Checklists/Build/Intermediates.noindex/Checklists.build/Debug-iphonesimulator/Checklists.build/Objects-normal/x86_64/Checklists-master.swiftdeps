@@ -1,7 +1,7 @@
 version: "Apple Swift version 4.0 (swiftlang-900.0.65.2 clang-900.0.37)"
 options: "2294ae28cf1222e25c4fab07933b87b7"
-build_time: [1509211121, 720829000]
+build_time: [1509220783, 228130000]
 inputs:
-  "/Users/Tamas/Dropbox/A_Egyetem BME/IOS/Ha\u0301zi/Checklists/Checklists/ChecklistViewController.swift": [1509211121, 0]
+  "/Users/Tamas/Dropbox/A_Egyetem BME/IOS/Ha\u0301zi/Checklists/Checklists/ChecklistViewController.swift": [1509220783, 0]
   "/Users/Tamas/Dropbox/A_Egyetem BME/IOS/Ha\u0301zi/Checklists/Checklists/ChecklistItem.swift": [1509211097, 0]
   "/Users/Tamas/Dropbox/A_Egyetem BME/IOS/Ha\u0301zi/Checklists/Checklists/AppDelegate.swift": [1509201504, 0]
