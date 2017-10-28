@@ -185,6 +185,26 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Wnullability"
 
 SWIFT_MODULE_NAMESPACE_PUSH("Checklists")
+@class UITextField;
+@class UIBarButtonItem;
+@class UITableView;
+@class NSBundle;
+@class NSCoder;
+
+SWIFT_CLASS("_TtC10Checklists21AddItemViewController")
+@interface AddItemViewController : UITableViewController <UITextFieldDelegate>
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified textField;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem * _Null_unspecified doneBarButton;
+- (void)viewWillAppear:(BOOL)animated;
+- (IBAction)cancel;
+- (IBAction)done;
+- (NSIndexPath * _Nullable)tableView:(UITableView * _Nonnull)tableView willSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class UIWindow;
 @class UIApplication;
 
@@ -200,10 +220,7 @@ SWIFT_CLASS("_TtC10Checklists11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UITableView;
 @class UITableViewCell;
-@class NSCoder;
-@class NSBundle;
 
 SWIFT_CLASS("_TtC10Checklists23ChecklistViewController")
 @interface ChecklistViewController : UITableViewController
