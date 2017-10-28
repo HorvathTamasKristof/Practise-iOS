@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController {
+class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
     
     var items: [ChecklistItem]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,17 +22,36 @@ class ChecklistViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func addItem(){
-        let newRowIndex = items.count //index of the new row
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItem" {
+            let navigationController = segue.destination as! UINavigationController // new view controller can be found in segue.destination
+            let contoller = navigationController.topViewController as! AddItemViewController //find AddItemViewController inside the navigation controller
+            contoller.delegate = self // once you have a reference to the AddItemViewController object, you set its delegate property to self
+        } else if segue.identifier == "EditItem" {
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.topViewController as! AddItemViewController
+            controller.delegate = self
+            
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell){
+                controller.itemToEdit = items[indexPath.row]
+            }
+        }
+    }
+    
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
         
-        let item = ChecklistItem()
-        item.text = "I'm a new row"
-        item.checked = false
+        let newRowIndex = items.count
         items.append(item)
         
-        let indexPath = IndexPath(row: newRowIndex, section: 0) //tableview add a new cell for the row
-        let indexPaths = [indexPath] //temporary array -> I can insert multiple rows at the same time
-        tableView.insertRows(at: indexPaths, with: .automatic) //tableView insert the new row
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        
+        dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -74,10 +92,13 @@ class ChecklistViewController: UITableViewController {
     }
 
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
+        
+        let label = cell.viewWithTag(1001) as! UILabel
+        
         if item.checked {
-            cell.accessoryType = .checkmark
+            label.text = "√"
         } else {
-            cell.accessoryType = .none
+            label.text = ""
         }
     }
     

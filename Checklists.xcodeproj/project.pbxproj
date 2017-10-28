@@ -61,11 +61,11 @@
 				023D3DDA1FA4CDE0004798DB /* AppDelegate.swift */,
 				023D3DDC1FA4CDE0004798DB /* ChecklistViewController.swift */,
 				023D3DDE1FA4CDE0004798DB /* Main.storyboard */,
+				029815B71FA5220100E06834 /* AddItemViewController.swift */,
+				022B98351FA4EBB1005FA543 /* ChecklistItem.swift */,
 				023D3DE11FA4CDE0004798DB /* Assets.xcassets */,
 				023D3DE31FA4CDE0004798DB /* LaunchScreen.storyboard */,
 				023D3DE61FA4CDE0004798DB /* Info.plist */,
-				022B98351FA4EBB1005FA543 /* ChecklistItem.swift */,
-				029815B71FA5220100E06834 /* AddItemViewController.swift */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";

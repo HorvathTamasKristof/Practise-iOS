@@ -220,13 +220,14 @@ SWIFT_CLASS("_TtC10Checklists11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIStoryboardSegue;
 @class UITableViewCell;
 
 SWIFT_CLASS("_TtC10Checklists23ChecklistViewController")
 @interface ChecklistViewController : UITableViewController
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
-- (IBAction)addItem;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (void)tableView:(UITableView * _Nonnull)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
